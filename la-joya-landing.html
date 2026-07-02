@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2 Lots on La Joya Dr — Horizon City, El Paso County | LandCurator</title>
+<meta name="description" content="Two 0.23-acre lots on La Joya Dr in Horizon City TX. Owner financing, no credit check, closes through a title company. $500 reserves your lot. Deed in 2 to 4 weeks." />
+
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '713056944975093');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=713056944975093&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* ── NAV ── */
+nav {
+  background: #0D1710;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo img { height: 28px; width: auto; }
+.nav-phone {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  background: #1B4332;
+  padding: 10px 18px;
+  border-radius: 6px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  min-height: 44px;
+  transition: background 0.2s;
+}
+.nav-phone:hover { background: #2D6A4F; }
+
+/* ── EYEBROW BAR ── */
+.eyebrow-bar {
+  background: #1B4332;
+  padding: 11px 5%;
+  text-align: center;
+}
+.eyebrow-bar span {
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+/* ── HERO ── */
+.hero {
+  background: #ffffff;
+  padding: 60px 5% 56px;
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  color: #0D1710;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero-address {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+.hero-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.hero-bullets li {
+  font-size: 15px;
+  color: #1a1a1a;
+  padding-left: 28px;
+  position: relative;
+  line-height: 1.5;
+}
+.hero-bullets li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #2D6A4F;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* ── CONTENT SECTION ── */
+.content-section {
+  border-top: 1px solid #e0dbd2;
+}
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 0 48px;
+  align-items: start;
+  padding: 48px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.content-left {
+  min-width: 0;
+}
+.content-right {
+  position: sticky;
+  top: 84px; /* 64px nav + 20px gap */
+  align-self: start;
+}
+
+/* ── SECTION LABELS + HEADINGS ── */
+.section-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #2D6A4F;
+  margin-bottom: 6px;
+}
+.section-heading-wrap { margin-bottom: 22px; }
+.section-heading {
+  display: inline-block;
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0D1710;
+  letter-spacing: -0.3px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #1B4332;
+}
+.prop-heading-wrap { margin-bottom: 22px; }
+.prop-heading {
+  display: inline-block;
+  font-size: clamp(22px, 2.8vw, 30px);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0D1710;
+  letter-spacing: -0.3px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #1B4332;
+}
+
+/* ── GALLERY ── */
+.gallery { margin-bottom: 22px; }
+.gallery-main {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  margin-bottom: 8px;
+  background: #e0dbd2;
+}
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+.gallery-thumb {
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+.gallery-thumb:hover,
+.gallery-thumb.active { border-color: #1B4332; }
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── SPECS ROW ── */
+.specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.spec-chip {
+  background: #ffffff;
+  border: 1px solid #e0dbd2;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.spec-chip .spec-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #555555;
+  margin-bottom: 4px;
+}
+.spec-chip .spec-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.spec-chip .spec-value.available { color: #1B4332; }
+
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  border-top: 1px solid #e0dbd2;
+  margin: 40px 0;
+}
+
+/* ── ABOUT BODY ── */
+.about-body p {
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.about-body p:last-child { margin-bottom: 0; }
+
+/* ── NEARBY LIST ── */
+.nearby-list {
+  list-style: none;
+}
+.nearby-list li {
+  font-size: 14.5px;
+  color: #555555;
+  padding: 12px 0 12px 22px;
+  border-bottom: 1px solid #e0dbd2;
+  position: relative;
+  line-height: 1.5;
+}
+.nearby-list li:last-child { border-bottom: none; }
+.nearby-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2D6A4F;
+  position: absolute;
+  left: 0;
+  top: 19px;
+}
+
+/* ── STEPS LIST ── */
+.steps-list { list-style: none; }
+.steps-list li {
+  font-size: 15px;
+  color: #1a1a1a;
+  padding: 12px 0 12px 30px;
+  border-bottom: 1px solid #e0dbd2;
+  position: relative;
+  line-height: 1.5;
+}
+.steps-list li:last-child { border-bottom: none; }
+.steps-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: #2D6A4F;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* ── TITLE COMPANY CALLOUT ── */
+.title-callout {
+  background: #E8F5EE;
+  border-left: 3px solid #1B4332;
+  border-radius: 0 6px 6px 0;
+  padding: 20px 24px;
+  margin: 32px 0 40px;
+}
+.title-callout h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+}
+.title-callout p {
+  font-size: 13.5px;
+  color: #555555;
+  line-height: 1.7;
+}
+
+/* ── LOTS TABLE ── */
+.lots-table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e0dbd2;
+  margin-bottom: 10px;
+}
+.lots-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 480px;
+}
+.lots-table thead tr { background: #1B4332; }
+.lots-table thead th {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+.lots-table tbody tr {
+  background: #ffffff;
+  border-bottom: 1px solid #e0dbd2;
+  transition: background 0.15s;
+}
+.lots-table tbody tr:last-child { border-bottom: none; }
+.lots-table tbody tr:hover { background: #f9f8f5; }
+.lots-table tbody td {
+  padding: 14px 16px;
+  color: #1a1a1a;
+  vertical-align: middle;
+}
+.status-available { color: #1B4332; font-weight: 700; }
+.table-caption {
+  font-size: 12px;
+  color: #555555;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* ── MAP ── */
+.map-disclaimer {
+  font-size: 12px;
+  color: #555555;
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+#property-map {
+  width: 100%;
+  height: 380px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0dbd2;
+}
+
+/* ── FORM CARD ── */
+.form-card {
+  background: #ffffff;
+  border: 1px solid #e0dbd2;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(13, 23, 16, 0.08);
+}
+.form-card-head {
+  background: #0D1710;
+  padding: 24px 24px 22px;
+}
+.claim-pill {
+  display: inline-block;
+  background: #1B4332;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.form-card-head h3 {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: -0.2px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.form-card-head p {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+.form-card-body {
+  padding: 22px 24px;
+  background: #ffffff;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #555555;
+  margin-bottom: 6px;
+}
+.form-group input:not([type="checkbox"]):not([type="radio"]),
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid #e0dbd2;
+  border-radius: 6px;
+  padding: 11px 12px;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 44px;
+}
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555555' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 34px;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: #1B4332; box-shadow: 0 0 0 2px rgba(27,67,50,0.08); }
+.form-group textarea { resize: vertical; min-height: 76px; }
+
+.check-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: -6px;
+  margin-bottom: 14px;
+}
+input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
+  accent-color: #1B4332;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
+  accent-color: #1B4332;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.check-line label {
+  font-size: 12px;
+  color: #555555;
+  line-height: 1.5;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-top: 1px;
+}
+
+.radio-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 4px;
+}
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.radio-option label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #555555;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.sms-consent {
+  background: #f9f8f5;
+  border: 1px solid #e0dbd2;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.sms-consent-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.sms-consent-inner input { margin-top: 2px; }
+.sms-consent-inner label {
+  font-size: 11.5px;
+  color: #555555;
+  line-height: 1.5;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.form-consent-text {
+  font-size: 11.5px;
+  color: #555555;
+  text-align: center;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.form-consent-text a {
+  color: #1B4332;
+  text-decoration: underline;
+}
+
+.form-error {
+  display: none;
+  background: #FBEEED;
+  color: #C0362C;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.btn-submit {
+  width: 100%;
+  background: #1B4332;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+  min-height: 48px;
+}
+.btn-submit:hover { background: #2D6A4F; }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.form-fine {
+  font-size: 11.5px;
+  color: #555555;
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  background: #1B4332;
+  padding: 16px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.trust-strip span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0D1710;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 44px 5% 24px;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+.footer-logo img {
+  height: 26px;
+  width: auto;
+  margin-bottom: 12px;
+  filter: brightness(0) invert(1);
+}
+.footer-tagline {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 360px;
+  line-height: 1.6;
+}
+.footer-legal-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
+}
+.footer-legal a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+}
+.footer-legal a:hover { color: #ffffff; }
+.fb-disclaimer {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.6;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 16px;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    padding: 32px 5%;
+    gap: 0;
+  }
+  .content-right {
+    position: static;
+    order: -1;
+    margin-bottom: 40px;
+  }
+  .content-left { order: 1; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  nav { padding: 0 4%; }
+  .nav-logo img { height: 22px; }
+  .nav-phone { font-size: 12.5px; padding: 9px 14px; }
+  .hero { padding: 40px 4% 36px; }
+  .content-grid { padding: 28px 4%; }
+  .gallery-thumbs { grid-template-columns: 1fr 1fr 1fr; }
+  .trust-strip { gap: 6px 12px; }
+  .footer-top { flex-direction: column; }
+  .eyebrow-bar { padding: 11px 4%; }
+  .eyebrow-bar span { font-size: 10px; letter-spacing: 1px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="https://assets.cdn.filesafe.space/dfFlPq6tV5mw6ZqBtzW0/media/69cd5f61bb06f5e1249e3781.png" alt="LandCurator" />
+  </a>
+  <a class="nav-phone" href="tel:18005200534">1 (800) 520-0534</a>
+</nav>
+
+<!-- EYEBROW TRUST BAR -->
+<div class="eyebrow-bar">
+  <span>NO CREDIT CHECK &nbsp;·&nbsp; OWNER FINANCING &nbsp;·&nbsp; CLOSE THROUGH TITLE COMPANY</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>2 Lots on La Joya Dr — Horizon City, El Paso County</h1>
+    <p class="hero-address">Horizon City, El Paso TX 79938 &nbsp;·&nbsp; 10 Minutes from N Ascencion Rd &nbsp;·&nbsp; Near Horizon Blvd &amp; Eastlake Blvd</p>
+    <ul class="hero-bullets">
+      <li>Two 0.23-acre lots available — buy one or both</li>
+      <li>Owner financing available — you pay us directly, no bank, no approval process</li>
+      <li>No credit check, no HOA, no build timeline</li>
+      <li>$500 reserves your lot — close through a title company, deed in 2 to 4 weeks</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONTENT SECTION -->
+<div class="content-section">
+  <div class="content-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="content-left">
+
+      <!-- ── PROPERTY 1 ── -->
+      <div class="prop-heading-wrap">
+        <h2 class="prop-heading">1 La Joya Dr</h2>
+      </div>
+
+      <div class="gallery" id="gallery1">
+        <div class="gallery-main">
+          <img id="gallery1-main"
+               src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_11_16_at_19_19_27_b4ada9999b.png"
+               alt="1 La Joya Dr — aerial view" />
+        </div>
+        <div class="gallery-thumbs">
+          <div class="gallery-thumb" onclick="swapImg('gallery1','https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_11_16_at_19_19_14_1859531c96.png',this)">
+            <img src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_11_16_at_19_19_14_1859531c96.png" alt="1 La Joya Dr view 2" />
+          </div>
+          <div class="gallery-thumb" onclick="swapImg('gallery1','https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_11_16_at_19_18_09_236e0a12ab.png',this)">
+            <img src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_11_16_at_19_18_09_236e0a12ab.png" alt="1 La Joya Dr view 3" />
+          </div>
+          <div class="gallery-thumb" onclick="swapImg('gallery1','https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_11_16_at_19_18_39_faeb57c5b1.png',this)">
+            <img src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_11_16_at_19_18_39_faeb57c5b1.png" alt="1 La Joya Dr view 4" />
+          </div>
+        </div>
+      </div>
+
+      <div class="specs-row">
+        <div class="spec-chip">
+          <span class="spec-label">SIZE</span>
+          <span class="spec-value">0.23 Acres (10,000 sq ft)</span>
+        </div>
+        <div class="spec-chip">
+          <span class="spec-label">PRICE</span>
+          <span class="spec-value">$15,750</span>
+        </div>
+        <div class="spec-chip">
+          <span class="spec-label">ACCESS</span>
+          <span class="spec-value">Dirt Road</span>
+        </div>
+        <div class="spec-chip">
+          <span class="spec-label">STATUS</span>
+          <span class="spec-value available">Available</span>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ── PROPERTY 2 ── -->
+      <div class="prop-heading-wrap">
+        <h2 class="prop-heading">2 La Joya Dr</h2>
+      </div>
+
+      <div class="gallery" id="gallery2">
+        <div class="gallery-main">
+          <img id="gallery2-main"
+               src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_12_16_at_14_30_23_d4295e2861.png"
+               alt="2 La Joya Dr — aerial view" />
+        </div>
+        <div class="gallery-thumbs">
+          <div class="gallery-thumb" onclick="swapImg('gallery2','https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_12_16_at_14_32_55_613fed7d8b.png',this)">
+            <img src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_12_16_at_14_32_55_613fed7d8b.png" alt="2 La Joya Dr view 2" />
+          </div>
+          <div class="gallery-thumb" onclick="swapImg('gallery2','https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_12_16_at_14_30_15_96107e29c4.png',this)">
+            <img src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_12_16_at_14_30_15_96107e29c4.png" alt="2 La Joya Dr view 3" />
+          </div>
+          <div class="gallery-thumb" onclick="swapImg('gallery2','https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_12_16_at_14_30_31_1ec75c3370.png',this)">
+            <img src="https://d1sr9ngwehj2gk.cloudfront.net/Screenshot_2025_12_16_at_14_30_31_1ec75c3370.png" alt="2 La Joya Dr view 4" />
+          </div>
+        </div>
+      </div>
+
+      <div class="specs-row">
+        <div class="spec-chip">
+          <span class="spec-label">SIZE</span>
+          <span class="spec-value">0.23 Acres (10,018 sq ft)</span>
+        </div>
+        <div class="spec-chip">
+          <span class="spec-label">PRICE</span>
+          <span class="spec-value">$7,500</span>
+        </div>
+        <div class="spec-chip">
+          <span class="spec-label">ACCESS</span>
+          <span class="spec-value">Dirt Road</span>
+        </div>
+        <div class="spec-chip">
+          <span class="spec-label">PARCEL #</span>
+          <span class="spec-value">H78406300500120</span>
+        </div>
+        <div class="spec-chip">
+          <span class="spec-label">STATUS</span>
+          <span class="spec-value available">Available</span>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ── ABOUT ── -->
+      <div class="section-heading-wrap">
+        <span class="section-label">PROPERTY OVERVIEW</span>
+        <h3 class="section-heading">About These Properties</h3>
+      </div>
+      <div class="about-body">
+        <p>1 La Joya Dr and 2 La Joya Dr sit within the same quiet stretch of Horizon City, El Paso County — approximately 10 minutes from North Ascencion Rd and minutes from Horizon Blvd and Eastlake Blvd. Each lot is 0.23 acres with dirt road frontage, no HOA, and no build timeline.</p>
+        <p>El Paso County permits manufactured homes, double wides, and RVs on both parcels. Buy one lot or both — each closes independently through a licensed title company. Your deed is delivered by certified mail within 2 to 4 weeks of closing.</p>
+        <p>Owner financing is available on both lots. No bank, no credit check, no approval process — you pay us directly.</p>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ── NEARBY ── -->
+      <div class="section-heading-wrap">
+        <span class="section-label">LOCATION</span>
+        <h3 class="section-heading">What's Nearby</h3>
+      </div>
+      <ul class="nearby-list">
+        <li>N Ascencion Rd — approximately 10 minutes north</li>
+        <li>Horizon Blvd (FM 1281) — minutes away, major commercial corridor</li>
+        <li>Eastlake Blvd — nearby, main east-west connector</li>
+        <li>Horizon High School — approximately 8 minutes</li>
+        <li>Walmart Supercenter (Horizon Blvd) — approximately 10 minutes</li>
+        <li>Hospitals of Providence Horizon City Campus — approximately 12 minutes</li>
+        <li>Downtown El Paso — approximately 30 minutes via I-10 West</li>
+      </ul>
+
+      <hr class="divider" />
+
+      <!-- ── HOW IT WORKS ── -->
+      <div class="section-heading-wrap">
+        <span class="section-label">THE PROCESS</span>
+        <h3 class="section-heading">How It Works</h3>
+      </div>
+      <ul class="steps-list">
+        <li>Submit your details — no commitment, no credit check, no deposit</li>
+        <li>We call you to walk through both available lots</li>
+        <li>$500 reserves the lot you choose</li>
+        <li>Owner financing begins — no bank, no approval process</li>
+        <li>Close through a title company — deed in 2 to 4 weeks</li>
+      </ul>
+
+      <!-- ── TITLE COMPANY NOTE ── -->
+      <div class="title-callout">
+        <h4>Closes Through a Licensed Title Company</h4>
+        <p>Every transaction closes through a licensed title company. Your funds are held in escrow, the title is searched and cleared, and your deed is recorded with El Paso County — then delivered to you by certified mail within 2 to 4 weeks. You get a clean deed with no surprises.</p>
+      </div>
+
+      <!-- ── AVAILABLE LOTS TABLE ── -->
+      <div class="section-heading-wrap">
+        <span class="section-label">INVENTORY</span>
+        <h3 class="section-heading">Available Lots</h3>
+      </div>
+      <div class="lots-table-wrap">
+        <table class="lots-table">
+          <thead>
+            <tr>
+              <th>ADDRESS</th>
+              <th>SIZE</th>
+              <th>ACCESS</th>
+              <th>ROAD</th>
+              <th>PRICE</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 La Joya Dr</td>
+              <td>0.23 Acres</td>
+              <td>Dirt Road</td>
+              <td>Near Horizon Blvd</td>
+              <td>$15,750</td>
+              <td class="status-available">Available</td>
+            </tr>
+            <tr>
+              <td>2 La Joya Dr</td>
+              <td>0.23 Acres</td>
+              <td>Dirt Road</td>
+              <td>Near Horizon Blvd</td>
+              <td>$7,500</td>
+              <td class="status-available">Available</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-caption">All lots: Zip 79938 &nbsp;·&nbsp; Horizon City, TX &nbsp;·&nbsp; Owner Financing Available &nbsp;·&nbsp; $500 Reserves Your Lot &nbsp;·&nbsp; Closes Through a Title Company</p>
+
+      <hr class="divider" />
+
+      <!-- ── MAP ── -->
+      <div class="section-heading-wrap">
+        <span class="section-label">MAP</span>
+        <h3 class="section-heading">Property Location</h3>
+      </div>
+      <p class="map-disclaimer">Pin locations are approximate (La Joya Dr corridor, Horizon City) — exact GPS pins pending parcel boundary confirmation.</p>
+      <div id="property-map"></div>
+
+    </div>
+    <!-- END LEFT COLUMN -->
+
+    <!-- RIGHT COLUMN — sticky form card -->
+    <aside class="content-right" id="lead-form">
+      <div class="form-card">
+        <div class="form-card-head">
+          <span class="claim-pill">2 LOTS AVAILABLE</span>
+          <h3>Get the Full Details Sent to You</h3>
+          <p>2 lots available &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; No credit check required. We'll reach out with full details on all three.</p>
+        </div>
+        <div class="form-card-body">
+
+          <form id="lead-form-el" onsubmit="handleSubmit(event)" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+1 (915) 000-0000" required />
+            </div>
+            <div class="check-line">
+              <input type="checkbox" id="phoneConfirm" required />
+              <label for="phoneConfirm">This is the best number to reach me. I understand the Landcurator team will be in touch shortly. Please confirm your phone number before submitting.</label>
+            </div>
+
+            <div class="form-group">
+              <label for="property_interest">Which property are you interested in? *</label>
+              <select id="property_interest" required>
+                <option value="">— Select a property —</option>
+                <option value="1 La Joya Dr ($15,750)">1 La Joya Dr ($15,750)</option>
+                <option value="2 La Joya Dr ($7,500)">2 La Joya Dr ($7,500)</option>
+                <option value="Both properties">Both properties</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="land_use">What do you plan to do with the land after closing?</label>
+              <select id="land_use">
+                <option value="">— Select an option —</option>
+                <option value="Build a home">Build a home</option>
+                <option value="Park my RV / Camping base">Park my RV / Camping base</option>
+                <option value="Investment — hold for appreciation">Investment — hold for appreciation</option>
+                <option value="Hunting / Recreation">Hunting / Recreation</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Is this your first time buying land?</label>
+              <div class="radio-row">
+                <div class="radio-option">
+                  <input type="radio" name="first_time" id="ft_yes" value="yes" />
+                  <label for="ft_yes">YES</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="first_time" id="ft_no" value="no" />
+                  <label for="ft_no">NO</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="timeline">How soon are you looking to close?</label>
+              <select id="timeline">
+                <option value="">— Select a timeframe —</option>
+                <option value="As soon as possible">As soon as possible</option>
+                <option value="Within 1–3 months">Within 1–3 months</option>
+                <option value="Within 6 months">Within 6 months</option>
+                <option value="Just researching for now">Just researching for now</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">What is your budget?</label>
+              <select id="budget">
+                <option value="">— Select a range —</option>
+                <option value="Under $10,000">Under $10,000</option>
+                <option value="$10,000 – $25,000">$10,000 – $25,000</option>
+                <option value="$25,000 – $50,000">$25,000 – $50,000</option>
+                <option value="$50,000+">$50,000+</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Anything else you'd like us to know? (Optional)</label>
+              <textarea id="notes" placeholder="Questions about the lots, financing terms, or anything else?"></textarea>
+            </div>
+
+            <div class="sms-consent">
+              <div class="sms-consent-inner">
+                <input type="checkbox" id="smsConsent" required />
+                <label for="smsConsent">I agree to receive SMS text messages from Landcurator about this property and related offers. Message frequency may vary. Msg and data rates may apply. Reply STOP to opt out. Reply HELP for help.</label>
+              </div>
+            </div>
+
+            <p class="form-consent-text">By submitting this form you agree to the terms above. View our <a href="https://web.landcurator.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+
+            <div class="form-error" id="form-error"></div>
+
+            <button type="submit" class="btn-submit" id="submit-btn">SEND MY DETAILS →</button>
+
+          </form>
+
+          <p class="form-fine">🔒 Secure &nbsp;·&nbsp; BBB A+ &nbsp;·&nbsp; No Spam</p>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+<!-- END CONTENT SECTION -->
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <span>✓ BBB A+ ACCREDITED SINCE 2018</span>
+  <span>·</span>
+  <span>NO CREDIT CHECK</span>
+  <span>·</span>
+  <span>DEED IN 2–4 WEEKS</span>
+  <span>·</span>
+  <span>OWNER FINANCING AVAILABLE</span>
+  <span>·</span>
+  <span>CLOSE THROUGH A TITLE COMPANY</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="https://assets.cdn.filesafe.space/dfFlPq6tV5mw6ZqBtzW0/media/69cd5f61bb06f5e1249e3781.png" alt="LandCurator" />
+        <p class="footer-tagline">Landcurator and Landxperte are wholly owned subsidiaries of UNOI Partners LLC.</p>
+      </div>
+      <div class="footer-legal">
+        <div class="footer-legal-label">Legal</div>
+        <a href="https://web.landcurator.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+      </div>
+    </div>
+    <p class="fb-disclaimer">This site is not part of the Facebook website or Facebook Inc. Additionally, this site is not endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+    <div class="footer-bottom">
+      <span>© 2026 LandCurator / UNOI Partners LLC</span>
+      <span>BBB A+ Accredited &nbsp;·&nbsp; No agents &nbsp;·&nbsp; No hidden fees</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── GALLERY ── */
+  function swapImg(galleryId, src, thumbEl) {
+    document.getElementById(galleryId + '-main').src = src;
+    document.querySelectorAll('#' + galleryId + ' .gallery-thumb').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    thumbEl.classList.add('active');
+  }
+
+  /* ── FORM ── */
+  const WEBHOOK_URL = 'WEBHOOK_URL_PLACEHOLDER';
+
+  function showFormError(msg) {
+    var el = document.getElementById('form-error');
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+  function hideFormError() {
+    document.getElementById('form-error').style.display = 'none';
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    hideFormError();
+
+    var fname    = document.getElementById('fname').value.trim();
+    var lname    = document.getElementById('lname').value.trim();
+    var email    = document.getElementById('email').value.trim();
+    var phone    = document.getElementById('phone').value.trim();
+    var propInt  = document.getElementById('property_interest').value;
+    var landUse  = document.getElementById('land_use').value;
+    var timeline = document.getElementById('timeline').value;
+    var budget   = document.getElementById('budget').value;
+    var notes    = document.getElementById('notes').value.trim();
+    var phoneOk  = document.getElementById('phoneConfirm').checked;
+    var smsOk    = document.getElementById('smsConsent').checked;
+    var ftEl     = document.querySelector('input[name="first_time"]:checked');
+    var firstTime = ftEl ? ftEl.value : '';
+
+    if (!fname || !lname || !email || !phone || !propInt) {
+      showFormError('Please fill in all required fields.');
+      return;
+    }
+    if (!phoneOk) {
+      showFormError('Please confirm your phone number using the checkbox above.');
+      return;
+    }
+    if (!smsOk) {
+      showFormError('Please agree to the SMS consent to continue.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showFormError('Please enter a valid email address.');
+      return;
+    }
+    if (phone.replace(/\D/g, '').length < 7) {
+      showFormError('Please enter a valid phone number.');
+      return;
+    }
+
+    var eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+    var payload = {
+      first_name: fname,
+      last_name: lname,
+      email: email,
+      phone: phone,
+      property_interest: propInt,
+      land_use: landUse,
+      first_time_buyer: firstTime,
+      timeline: timeline,
+      budget: budget,
+      message: notes,
+      sms_consent: true,
+      event_id: eventId
+    };
+
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      var res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        window.location.href = 'https://web.landcurator.com/thank-you-page?eid=' + eventId;
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'SEND MY DETAILS →';
+        showFormError('Something went wrong. Please call us at 1 (800) 520-0534.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'SEND MY DETAILS →';
+      showFormError('Something went wrong. Please call us at 1 (800) 520-0534.');
+    }
+  }
+
+  /* ── MAP ── */
+  var map = L.map('property-map', {
+    center: [31.7018, -106.1418],
+    zoom: 16,
+    scrollWheelZoom: false
+  });
+
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    maxZoom: 19
+  }).addTo(map);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CartoDB',
+    subdomains: 'abcd',
+    maxZoom: 20,
+    opacity: 0.7
+  }).addTo(map);
+
+  var redIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+  L.marker([31.7020, -106.1420], { icon: redIcon })
+    .addTo(map)
+    .bindPopup('<strong>1 La Joya Dr</strong><br>0.23 Acres &middot; $15,750');
+
+  L.marker([31.7015, -106.1415], { icon: redIcon })
+    .addTo(map)
+    .bindPopup('<strong>2 La Joya Dr</strong><br>0.23 Acres &middot; $7,500');
+</script>
+
+</body>
+</html>
